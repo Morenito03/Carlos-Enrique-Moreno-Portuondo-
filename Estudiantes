@@ -1,0 +1,30 @@
+class Estudiante:
+    def _init_(self, nombre, calificaciones, asistencia):
+        self.nombre = nombre
+        self.calificaciones = calificaciones
+        self.asistencia = asistencia
+
+    def promedio(self):
+        return sum(self.calificaciones) / len(self.calificaciones)
+
+    def evaluar(self):
+        promedio_calificaciones = self.promedio()
+        porcentaje_asistencia = (self.asistencia / 100) * 100
+
+        if promedio_calificaciones >= 70 and porcentaje_asistencia >= 75:
+            return f"{self.nombre} ha aprobado."
+        else:
+            sugerencia = ""
+            if promedio_calificaciones < 70:
+                sugerencia += "Mejorar las calificaciones. "
+            if porcentaje_asistencia < 75:
+                sugerencia += "Mejorar la asistencia."
+            return f"{self.nombre} ha reprobado. {sugerencia}"
+
+# Crear instancias de estudiantes
+estudiante1 = Estudiante("Juan", [80, 90, 70, 85], 80)
+estudiante2 = Estudiante("María", [60, 65, 70, 55], 90)
+
+# Evaluar a los estudiantes
+print(estudiante1.evaluar())
+print(estudiante2.evaluar())
